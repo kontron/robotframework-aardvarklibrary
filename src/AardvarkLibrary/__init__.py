@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import array
-from pyaardvark import Aardvark
+import pyaardvark
 
 from utils import int_any_base, list_any_input
 
@@ -44,27 +44,22 @@ class AardvarkLibrary:
         to it by the `Close All Connections` keyword.
         """
 
-        device = Aardvark()
+        port = None
+        serial = None
         if isinstance(port_or_serial, basestring) and '-' in port_or_serial:
             logger.info('Opening Aardvark adapter with serial %s' %
                     (port_or_serial,))
-            for port in Aardvark.find_devices():
-                device.open(port)
-                if port_or_serial == device.unique_id_str():
-                    break
-                device.close()
-            else:
-                raise RuntimeError('No Aardvark adapter with serial %s found.'
-                        % (port_or_serial,))
+            serial = port_or_serial
         else:
             port = int(port_or_serial)
             logger.info('Opening Aardvark adapter on port %d' % (port,))
-            device.open(port)
+
+        device = pyaardvark.open(port=port, serial_number=serial)
 
         device.i2c_bitrate(self._i2c_bitrate)
         device.spi_bitrate(self._spi_bitrate)
-        device.configure(Aardvark.CONFIG_SPI_I2C)
-        device.spi_configure_mode(Aardvark.SPI_MODE_3)
+        device.configure(pyaardvark.CONFIG_SPI_I2C)
+        device.spi_configure_mode(pyaardvark.SPI_MODE_3)
         self._device = device
         return self._cache.register(self._device, alias)
 
