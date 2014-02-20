@@ -56,8 +56,8 @@ class AardvarkLibrary:
 
         device = pyaardvark.open(port=port, serial_number=serial)
 
-        device.i2c_bitrate(self._i2c_bitrate)
-        device.spi_bitrate(self._spi_bitrate)
+        device.i2c_bitrate = self._i2c_bitrate
+        device.spi_bitrate = self._spi_bitrate
         device.configure(pyaardvark.CONFIG_SPI_I2C)
         device.spi_configure_mode(pyaardvark.SPI_MODE_3)
         self._device = device
@@ -121,7 +121,7 @@ class AardvarkLibrary:
             logger.info('Enabling I2C pullup resistors.')
         else:
             logger.info('Disabling I2C pullup resistors.')
-        self._device.i2c_enable_pullups(enable)
+        self._device.i2c_pullups = enable
 
     def enable_traget_power(self, enable=True):
         """Enable (or disable) the target power."""
@@ -130,7 +130,7 @@ class AardvarkLibrary:
             logger.info('Enabling target power.')
         else:
             logger.info('Disabling target power.')
-        self._device_enable_target_power(enable)
+        self._device.target_power = enable
 
     def i2c_master_read(self, address, length=1):
         """Perform an I2C master read access.
