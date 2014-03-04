@@ -58,7 +58,8 @@ class AardvarkLibrary:
 
         device.i2c_bitrate = self._i2c_bitrate
         device.spi_bitrate = self._spi_bitrate
-        device.configure(pyaardvark.CONFIG_SPI_I2C)
+        device.enable_i2c = True
+        device.enable_spi = True
         device.spi_configure_mode(pyaardvark.SPI_MODE_3)
         self._device = device
         return self._cache.register(self._device, alias)
