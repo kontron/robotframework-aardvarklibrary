@@ -1,0 +1,20 @@
+language: python
+python:
+ - '2.7'
+env:
+ global:
+  - secure: "iGRV50wttn6Uexnevckixi4TlsTYN/ynzHeQ8oeALf/VHbScz96ELPfkruNbX+0X9Z5duRmV9W8UIX055PNZULRjl8LzRjcm5/lhHPXQ47xCrjKFMiD1LAmo5PRzNxSLFJylbvWsYziBm/mNR69v3OoAsdvMJnjMP1QFoUGRK5s="
+  - GIT_CONFIG_PARAMETERS="'remote.github.url=https://${TOKEN}@github.com/kontron/robotframework-aardvarklibrary.git'"
+script: true
+after_script:
+ - PYTHONPATH=src python -m robot.libdoc AardvarkLibrary /tmp/AardvarkLibrary.html
+ - git remote set-branches --add origin gh-pages
+ - git fetch origin
+ - git checkout gh-pages
+ - mv /tmp/AardvarkLibrary.html .
+ - git add AardvarkLibrary.html
+ - git config --global user.email "travis@travis-ci.org"
+ - git config --global user.name "Travis CI"
+ - git commit -m "autogen libdoc ($(date -R))"
+ - git push github gh-pages 2>&1 | grep -v http
+
