@@ -19,7 +19,10 @@ def main():
                 'Topic :: Software Development :: Testing',
             ],
             packages = [ 'AardvarkLibrary' ],
-            install_requires = [ 'robotframework', 'pyaardvark' ]
+            install_requires = [
+                'robotframework',
+                'pyaardvark >= 0.2',
+            ]
     )
 
 if __name__ == '__main__':
