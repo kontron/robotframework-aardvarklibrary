@@ -4,8 +4,6 @@ AarvarkLibrary for Robot Framework |BuildStatus|
 AardvarkLibrary is a `Robot Framework`_ test library for the `Total Phase`_
 Aardvark |I2C|/SPI host adapter.
 
-The `Total Phase`_ Aardvark is an USB |I2C|/SPI host adapter.
-
 Features
 --------
 
