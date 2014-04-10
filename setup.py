@@ -43,6 +43,11 @@ class run_build_libdoc(Command):
         except ImportError:
             print "build_libdoc requires the Robot Framework package."
             sys.exit(-1)
+
+        # fake pyaardvark module, this way we are able to generate the
+        # documentation without having the pyaardvark module installed
+        sys.modules['pyaardvark'] = lambda:None
+
         robot.libdoc.libdoc('AardvarkLibrary', 'docs/AardvarkLibrary.html')
 
 def main():
