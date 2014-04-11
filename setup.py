@@ -68,7 +68,7 @@ def main():
             packages = [ 'AardvarkLibrary' ],
             install_requires = [
                 'robotframework',
-                'pyaardvark >= 0.2',
+                'pyaardvark >= 0.2.1',
             ],
             cmdclass = {
                 'build_libdoc': run_build_libdoc,
