@@ -7,9 +7,9 @@ Aardvark |I2C|/SPI host adapter.
 Features
 --------
 
- * |I2C| master write and read accesses
- * SPI master transfers
- * support for control signals like target power and internal |I2C| pullups
+* |I2C| master write and read accesses
+* SPI master transfers
+* support for control signals like target power and internal |I2C| pullups
 
 
 Documentation
