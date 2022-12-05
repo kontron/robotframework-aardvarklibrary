@@ -53,7 +53,7 @@ class AardvarkLibrary:
 
         port = None
         serial = None
-        if isinstance(port_or_serial, basestring) and '-' in port_or_serial:
+        if isinstance(port_or_serial, str) and '-' in port_or_serial:
             logger.info('Opening Aardvark adapter with serial %s' %
                     (port_or_serial,))
             serial = port_or_serial
