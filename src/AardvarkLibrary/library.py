@@ -16,7 +16,7 @@ import array
 import pyaardvark
 
 from . import __version__
-from utils import int_any_base, list_any_input
+from .utils import int_any_base, list_any_input
 
 from robot.utils.connectioncache import ConnectionCache
 from robot.api import logger
