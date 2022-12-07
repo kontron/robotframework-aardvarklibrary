@@ -204,7 +204,6 @@ class AardvarkLibrary:
             data = [int_any_base(c) for c in data]
         logger.info('Writing %d bytes to %02xh: %s' %
                 (len(data), address, ' '.join('%02x' % d for d in data)))
-        data = ''.join('%c' % chr(c) for c in data)
         data = self._device.i2c_master_write_read(address, data, length)
         data = array.array('B', data)
         logger.info('Read %d bytes from %02xh: %s' %
