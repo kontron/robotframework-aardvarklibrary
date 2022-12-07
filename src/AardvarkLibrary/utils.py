@@ -21,7 +21,7 @@ def list_any_input(data):
      value:       16 => [16]
      value:       0x10 => [16]
     """
-    if isinstance(data, basestring):
+    if isinstance(data, str):
         data = [_int_any_base(d) for d in data.split(' ')]
     elif isinstance(data, tuple):
         data = [d for d in data]
