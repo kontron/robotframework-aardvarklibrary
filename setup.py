@@ -41,7 +41,7 @@ class run_build_libdoc(Command):
         try:
             import robot.libdoc
         except ImportError:
-            print "build_libdoc requires the Robot Framework package."
+            print("build_libdoc requires the Robot Framework package.")
             sys.exit(-1)
 
         # fake pyaardvark module, this way we are able to generate the
